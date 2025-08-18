@@ -522,8 +522,22 @@
                                 <!-- Amount in Words -->
                                 <div class="border border-black border-t-0 p-2">
                                     <strong>Grand Total (in words):</strong>
-                                    ${numberToWords(Math.floor(totals.grandTotal))} Rupees Only
+                                    ${(() => {
+                                        const total = totals.grandTotal;
+                                        const rupees = Math.floor(total);
+                                        const paise = Math.round((total - rupees) * 100);
+                                        
+                                        let rupeesText = numberToWords(rupees);
+                                        if (paise > 0) {
+                                            const paiseText = numberToWords(paise);
+                                            return `${rupeesText} Rupees and ${paiseText} Paise Only`;
+                                        }
+                                        return `${rupeesText} Rupees Only`;
+                                    })()}
                                     <span class="float-right font-bold">₹${totals.grandTotal.toFixed(2)}</span>
+                                    <br>
+                                    <strong>Round Off:</strong>
+                                    ${numberToWords(Math.round(totals.grandTotal))} Rupees Only
                                 </div>
                                 
                                 <!-- Tax Details Table -->
@@ -644,7 +658,18 @@
                                 <!-- Tax Amount in Words -->
                                 <div class="border border-black border-t-0 p-2">
                                     <strong>Tax Amount (in words):</strong>
-                                    ${numberToWords(Math.floor(totals.totalTax))} Rupees Only
+                                    ${(() => {
+                                        const totalTax = totals.totalTax;
+                                        const rupees = Math.floor(totalTax);
+                                        const paise = Math.round((totalTax - rupees) * 100);
+                                        
+                                        let rupeesText = numberToWords(rupees);
+                                        if (paise > 0) {
+                                            const paiseText = numberToWords(paise);
+                                            return `${rupeesText} Rupees and ${paiseText} Paise Only`;
+                                        }
+                                        return `${rupeesText} Rupees Only`;
+                                    })()}
                                 </div>
                                 
                                 <!-- Declaration and Signature with Bank Details -->
