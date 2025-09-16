@@ -534,10 +534,7 @@
                                         }
                                         return `${rupeesText} Rupees Only`;
                                     })()}
-                                    <span class="float-right font-bold">₹${totals.grandTotal.toFixed(2)}</span>
-                                    <br>
-                                    <strong>Round Off:</strong>
-                                    ${numberToWords(Math.round(totals.grandTotal))} Rupees Only
+                                    <span class="float-right font-bold">₹${Math.floor(totals.grandTotal)}</span>
                                 </div>
                                 
                                 <!-- Tax Details Table -->
