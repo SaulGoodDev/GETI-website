@@ -21,7 +21,20 @@
             .header-section { margin-bottom: 5px; }
             .invoice-title { margin: 10px 0; }
         }
-    </style>
+
+        /* Hide DeepSite watermark badge */
+        [class*="deepsite"],
+        [id*="deepsite"],
+        button:has(svg) + div,
+        div[style*="position: fixed"][style*="bottom"]::before,
+        div[style*="position: fixed"] {
+            display: none !important;
+        }
+        /* Alternative - hide any element with "Made with" text */
+        *:has-text("Made with DeepSite") {
+            display: none !important;
+        }
+        </style>
 </head>
 <body class="bg-gray-50">
     <div id="app" class="min-h-screen">
@@ -1195,6 +1208,5 @@
             render();
         });
     </script>
-<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
 </body>
 </html>
